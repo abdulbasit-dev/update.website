@@ -1,5 +1,6 @@
 <?php
 $title = "Gallery";
+$page = "gallery";
 include "./includes/header.php";
 include "./confing.php";
 ?>

@@ -1,5 +1,6 @@
 <?php
 $title = "Hacking";
+$page = "hacking";
 include "./includes/header.php";
 include "./confing.php";
 ?>

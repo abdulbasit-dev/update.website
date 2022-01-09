@@ -25,10 +25,10 @@
             <i class="fas fa-bars"></i>
         </label>
         <ul>
-            <li><a class="active" href="./index.php">Home</a></li>
-            <li><a href="./gallery.php">Gallery</a></li>
-            <li><a href="./about.php">About</a></li>
-            <li><a href="./hacking.php">Hacking</a></li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="./index.php" class="<?php echo $page == "home" ? "active" : null ?>">Home</a></li>
+            <li><a href="./gallery.php" class="<?php echo $page == "gallery" ? "active" : null ?>">Gallery</a></li>
+            <li><a href="./about.php" class="<?php echo $page == "about" ? "active" : null ?>">About</a></li>
+            <li><a href="./hacking.php" class="<?php echo $page == "hacking" ? "active" : null ?>">Hacking</a></li>
+            <li><a href="./feedback.php" class="<?php echo $page == "feedback" ? "active" : null ?>">Feedback</a></li>
         </ul>
     </nav>
