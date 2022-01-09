@@ -1,5 +1,5 @@
 <?php
-$title = "Hacking";
+$title = "Feedback";
 $page = "feedback";
 include "./includes/header.php";
 
