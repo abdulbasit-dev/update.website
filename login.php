@@ -37,24 +37,27 @@ if (isset($_POST["login"])) {
 
 ?>
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-4">
-        <div class="card bg-dark text-white p-4 rounded-lg">
-            <h3 class="mb-4 text-center">Login</h3>
-            <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
-                <div class="mb-3">
-                    <label for="username">UserName</label>
-                    <input type="text" name="username" id="username" class="form-control" required>
-                    <small class="form-text text-danger"><?php echo $error["username"] ?></small>
+<div class="container">
 
-                </div>
-                <div class="mb-3">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" min="8" required>
-                    <small class="form-text text-danger"><?php echo $error["password"] ?></small>
-                </div>
-                <button type="submit" name="login" class="btn btn-outline-secondary btn-block">Login</button>
-            </form>
+    <div class="row my-5 justify-content-center">
+        <div class="col-md-4">
+            <div class="card bg-dark text-white p-4 rounded-lg">
+                <h3 class="mb-4 text-center">Login</h3>
+                <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
+                    <div class="mb-3">
+                        <label for="username">UserName</label>
+                        <input type="text" name="username" id="username" class="form-control" required>
+                        <small class="form-text text-danger"><?php echo $error["username"] ?></small>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" min="8" required>
+                        <small class="form-text text-danger"><?php echo $error["password"] ?></small>
+                    </div>
+                    <button type="submit" name="login" class="btn btn-outline-secondary btn-block">Login</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
