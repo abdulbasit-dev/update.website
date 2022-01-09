@@ -41,7 +41,7 @@ if (isset($_POST["login"])) {
 
     <div class="row my-5 justify-content-center">
         <div class="col-md-4">
-            <div class="card bg-dark text-white p-4 rounded-lg">
+            <div class="card bg-dark opacity-75 text-white p-4 rounded-lg" class="opacity:0.5;">
                 <h3 class="mb-4 text-center">Login</h3>
                 <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
                     <div class="mb-3">

@@ -22,7 +22,7 @@ $result = mysqli_query($db, $query);
         <?php endif; ?>
     </div>
 
-    <div class="row my-5">
+    <div class="row my-5 justify-content-center">
         <?php while ($data = mysqli_fetch_assoc($result)) : ?>
             <div class="col-lg-3 mb-4">
                 <div class="card">
