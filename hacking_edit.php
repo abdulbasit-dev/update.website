@@ -16,30 +16,37 @@ if (isset($_POST['update'])) {
     $description = htmlspecialchars($_POST["description"]);
 
 
-    $file = $_FILES['file'];
-    $fileName = $file['name'];
-    $fileType = $file['type'];
-    $fileTmpName = $file['tmp_name'];
-    $fileError = $file['error'];
-    $fileSize = $file['size'];
+    if ($_FILES['file']['name']) {
+        $file = $_FILES['file'];
+        $fileName = $file['name'];
+        $fileType = $file['type'];
+        $fileTmpName = $file['tmp_name'];
+        $fileError = $file['error'];
+        $fileSize = $file['size'];
+        $fileExt = explode(".", $fileName);
+        $fileActualExt = strtolower($fileExt[1]);
+        $allowedFileType = ["png", 'jpg', 'jpeg'];
 
-
-
-    $fileExt = explode(".", $fileName);
-    $fileActualExt = strtolower($fileExt[1]);
-    $allowedFileType = ["png", 'jpg', 'jpeg'];
-
-    if (in_array($fileActualExt, $allowedFileType)) {
-        $newFileName = $fileExt[0] . "." . $fileActualExt;
-        move_uploaded_file($fileTmpName, "./upload/$newFileName");
-        $query = "UPDATE post 
+        if (in_array($fileActualExt, $allowedFileType)) {
+            $newFileName = $fileExt[0] . "." . $fileActualExt;
+            move_uploaded_file($fileTmpName, "./upload/$newFileName");
+            $query = "UPDATE post 
         SET title = '$title', description= '$description' , image= '/upload/$newFileName' 
+        WHERE id = {$id}";
+            $result = mysqli_query($db, $query);
+            if ($result) {
+                header("Location:hacking.php");
+            } else {
+                $error["result"] = "please choose valid image (png, jpg, jpeg)";
+            }
+        }
+    } else {
+        $query = "UPDATE post 
+        SET title = '$title', description= '$description'
         WHERE id = {$id}";
         $result = mysqli_query($db, $query);
         if ($result) {
             header("Location:hacking.php");
-        } else {
-            $error["result"] = "please choose valid image (png, jpg, jpeg)";
         }
     }
 }

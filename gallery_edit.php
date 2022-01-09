@@ -15,31 +15,43 @@ if (isset($_POST['update'])) {
     $title = htmlspecialchars($_POST["title"]);
     $description = htmlspecialchars($_POST["description"]);
 
-
-    $file = $_FILES['file'];
-    $fileName = $file['name'];
-    $fileType = $file['type'];
-    $fileTmpName = $file['tmp_name'];
-    $fileError = $file['error'];
-    $fileSize = $file['size'];
+    // Array ( [name] => 178343.jpg [type] => image/jpeg [tmp_name] => C:\xampp\tmp\phpC7A.tmp [error] => 0 [size] => 42063 ) 
+    // print_r($_FILES['file']['name']);
+    // die;
 
 
+    if ($_FILES['file']['name']) {
+        $file = $_FILES['file'];
+        $fileName = $file['name'];
+        $fileType = $file['type'];
+        $fileTmpName = $file['tmp_name'];
+        $fileError = $file['error'];
+        $fileSize = $file['size'];
 
-    $fileExt = explode(".", $fileName);
-    $fileActualExt = strtolower($fileExt[1]);
-    $allowedFileType = ["png", 'jpg', 'jpeg'];
+        $fileExt = explode(".", $fileName);
+        $fileActualExt = strtolower($fileExt[1]);
+        $allowedFileType = ["png", 'jpg', 'jpeg'];
 
-    if (in_array($fileActualExt, $allowedFileType)) {
-        $newFileName = $fileExt[0] . "." . $fileActualExt;
-        move_uploaded_file($fileTmpName, "./upload/$newFileName");
-        $query = "UPDATE gallery 
+        if (in_array($fileActualExt, $allowedFileType)) {
+            $newFileName = $fileExt[0] . "." . $fileActualExt;
+            move_uploaded_file($fileTmpName, "./upload/$newFileName");
+            $query = "UPDATE gallery 
         SET title = '$title', description= '$description' , image= '/upload/$newFileName' 
+        WHERE id = {$id}";
+            $result = mysqli_query($db, $query);
+            if ($result) {
+                header("Location:gallery.php");
+            } else {
+                $error["result"] = "please choose valid image (png, jpg, jpeg)";
+            }
+        }
+    } else {
+        $query = "UPDATE gallery 
+        SET title = '$title', description= '$description'
         WHERE id = {$id}";
         $result = mysqli_query($db, $query);
         if ($result) {
             header("Location:gallery.php");
-        } else {
-            $error["result"] = "please choose valid image (png, jpg, jpeg)";
         }
     }
 }
@@ -57,7 +69,7 @@ $data = mysqli_fetch_assoc($result);
         <div class="row my-5 justify-content-center">
             <div class="col-md-8 bg-white p-3 rounded">
                 <form class=" p-4 rounded" enctype="multipart/form-data" method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-                    <h3 class="mb-4">Edit Post</h3>
+                    <h3 class="mb-4">Edit Gallery</h3>
                     <?php if (isset($_POST["add"])) {
                         echo "<p class='text-danger'>" . $error['result'] . "</p>";
                     } ?>
