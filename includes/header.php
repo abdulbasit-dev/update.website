@@ -14,11 +14,11 @@
 
     <!-- custome style  -->
     <link rel="stylesheet" href="./hacking.css">
-    <title><?php echo $title ?? "Document" ?></title>
+    <title>968 HACK - <?php echo $title ?? "Document" ?></title>
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="logo">968 HACK</div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">

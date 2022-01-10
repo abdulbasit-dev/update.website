@@ -15,9 +15,10 @@ $result = mysqli_query($db, $query);
 
 ?>
 
+
 <div class="container">
     <div class="mt-4">
-        <?php if (isset($_SESSION["admin"])) : ?>
+        <?php if (isset($_SESSION["login"])) : ?>
             <a href="./hacking_post.php" class="btn btn-primary"> Add New Post</a>
         <?php endif; ?>
     </div>

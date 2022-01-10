@@ -12,7 +12,7 @@ if (isset($_POST["submit"])) {
     $title = htmlspecialchars($_POST["title"]);
     $description = htmlspecialchars($_POST["description"]);
 
-    if (empty($title) || empty($description) ) {
+    if (empty($title) || empty($description)) {
         $error["result"] = "please fill all the fields";
     }
 
@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
     $fileError = $file['error'];
     $fileSize = $file['size'];
 
- 
+
 
     $fileExt = explode(".", $fileName);
     $fileActualExt = strtolower($fileExt[1]);
@@ -35,15 +35,14 @@ if (isset($_POST["submit"])) {
         $query = mysqli_query($db, "INSERT INTO `gallery`(`title`,`description`,`image`) VALUES ('$title','$description','/upload/$newFileName')");
         if ($query) {
             header("Location:gallery.php");
-        } else {
-            $error["result"] = "please choose valid image (png, jpg, jpeg)";
         }
+    } else {
+        $error["result"] = "please choose valid image (png, jpg, jpeg)";
     }
-
 }
 ?>
 
-<?php if (isset($_SESSION["admin"])) : ?>
+<?php if (isset($_SESSION["login"])) : ?>
     <div class="container">
         <div class="row my-5 justify-content-center">
             <div class="col-md-8 bg-white p-3 rounded">

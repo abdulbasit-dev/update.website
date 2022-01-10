@@ -2,15 +2,13 @@
 $title = "Home";
 $page = "home";
 include "./includes/header.php";
-?>
+?> 
 
 <div class="fod">
     <a href="#">HOME</a>
     <a href="#">ABOUT</a>
     <a href="#">GALLERY</a>
     <a href="#">HACKING</a>
-</div>
-</div>
 </div>
 <section class="footer">
     <div class="social">

@@ -10,14 +10,11 @@ session_start();
 if (isset($_GET['editId'])) {
     $id = $_GET['editId'];
 }
+
 if (isset($_POST['update'])) {
     $id = htmlspecialchars($_POST["edit_id"]);
     $title = htmlspecialchars($_POST["title"]);
     $description = htmlspecialchars($_POST["description"]);
-
-    // Array ( [name] => 178343.jpg [type] => image/jpeg [tmp_name] => C:\xampp\tmp\phpC7A.tmp [error] => 0 [size] => 42063 ) 
-    // print_r($_FILES['file']['name']);
-    // die;
 
 
     if ($_FILES['file']['name']) {
@@ -64,7 +61,7 @@ $data = mysqli_fetch_assoc($result);
 
 
 
-<?php if (isset($_SESSION["admin"])) : ?>
+<?php if (isset($_SESSION["login"])) : ?>
     <div class="container">
         <div class="row my-5 justify-content-center">
             <div class="col-md-8 bg-white p-3 rounded">

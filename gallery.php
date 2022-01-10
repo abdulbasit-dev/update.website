@@ -17,7 +17,7 @@ $result = mysqli_query($db, $query);
 
 <div class="container">
     <div class="mt-4">
-        <?php if (isset($_SESSION["admin"])) : ?>
+        <?php if (isset($_SESSION["login"])) : ?>
             <a href="./gallery_post.php" class="btn btn-primary"> Add New Gallery</a>
         <?php endif; ?>
     </div>

@@ -36,11 +36,11 @@ if (isset($_POST['delete'])) {
                     <h5 class="card-title"><?php echo $data["title"] ?></h5>
                     <p class="card-text"><?php echo  $data["description"] ?></p>
                     <div class="d-flex justify-content-end">
-                        <?php if (isset($_SESSION["admin"])) : ?>
+                        <?php if (isset($_SESSION["login"])) : ?>
                             <a href="gallery_edit.php?editId=<?php echo $data["id"] ?>" class="btn btn-info btn-sm mx-2">Edit</a>
                             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
                                 <input type="text" hidden value='<?php echo $data["id"] ?>' name="delete_id">
-                                <button class="btn btn-danger btn-sm ml-2" name="delete">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm ml-2" name="delete">Delete</button>
                             </form>
                         <?php endif; ?>
                     </div>
